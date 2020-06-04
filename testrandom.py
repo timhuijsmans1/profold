@@ -24,6 +24,7 @@ class AminoAcid:
         self.column = int(column)
         self.value = value
     
+    # update methods for next amino acid
     def step_right(self):
         self.row += 1
         return self.row
