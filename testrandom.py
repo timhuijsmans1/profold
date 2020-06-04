@@ -65,7 +65,8 @@ def matrix_initializer(width,height):
     initial_matrix = Matrix(width,height).matrix
     
     # define the string to map as a list of H or P values:
-    protein_string = ["H","H","P","H","H","H","P","H","P","H","H","H","P","H"]
+    #protein_string = ["H","H","P","H","H","H","P","H","P","H","H","H","P","H"]
+    protein_string = [1,1,2,1,1,1,2,1,2,1,1,1,2,1]
     
     # create the first amino acid object with coordinates in the middle of the matrix    
     amino_acid = AminoAcid(height/2, width/2, protein_string[0])
@@ -139,13 +140,15 @@ def main():
     initial_matrix = matrix_initializer(width,height)
     
     # update the matrix with the rest of the protein string
-    matrix = matrix_updater(initial_matrix[0], initial_matrix[1], initial_matrix[2], initial_matrix[3])
+    matrix = matrix_updater(initial_matrix[0], initial_matrix[1][1:], initial_matrix[2], initial_matrix[3])
     
     
     """Output: h*w matrix showing the folded protein and the list of aminoacid location in order of bonds"""    
     for row in matrix[0]:
         print (row)
     print(matrix[1].protein)
+    plt.imshow(matrix[0], cmap=plt.cm.bwr)
+    plt.show()
     
 if __name__ == "__main__":
     main()
