@@ -33,8 +33,8 @@ class Protein:
     
     def __init__(self):
     
-    # add the position of a new amino acid to a list of amino acid coordinate lists
-    # in order to keep track of all linked amino acid position
+    # add the position of a new amino acid to a dict of amino acids with H or P key and value
+    # being a coordinate lists in order to keep track of all linked amino acid position
     def add_amino_acid:
         
 def main():
@@ -43,11 +43,20 @@ def main():
     # define the string to map as a list of H or P values:
     protein_string = [H,H,P,H,H,H,P,H,P,H,H,H,P,H]
     
-    # create amino acid object with coordinates in the middle of the matrix
-    amino_acid = AminoAcid(height/2, width/2, protein[0])
+    # create the first amino acid object with coordinates in the middle of the matrix
+    amino_acid = AminoAcid(height/2, width/2, protein_string[0])
+    # Place this first amino acid in the middle of the matrix
+    
+    """This part needs to loop for all the other amino acids in protein_string after the first one is placed"""
     
     # check available positions around the most recent placed amino_acid
-    if not 
+    
+    # create a new amino acid object with coordinates of a random possible 
+    # position around the previous amino acid
+    
+    # update the Matrix position with the value at the coordinates of the new amino acid object
+    
+    # add the the coordinates and value of the amino acid to the Protein
     
 if __name__ == "__main__":
     main()
