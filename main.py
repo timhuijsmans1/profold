@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-
 from code.classes.matrix import Matrix
 from code.classes.aminoacid import AminoAcid
 from code.classes.protein import Protein
@@ -7,6 +5,7 @@ from code.classes.connection import Connection
 
 from code.algorithms.matrixinit import matrix_initializer
 from code.algorithms.matrixupdate import matrix_updater
+from code.visualizations.visualize import visualizer
 
 def main():
     
@@ -28,23 +27,15 @@ def main():
     # initilize connection
     connections = Connection()
     
-  
     # --------------------------- Initilize grid with first amino acid --------------------------
     initial_matrix = matrix_initializer(initial_matrix, amino_acid, protein)
     
     
     # --------------------------- Random protein construction --------------------------
     matrix = matrix_updater(initial_matrix[0], protein_string[1:], initial_matrix[1], initial_matrix[2], connections)
-    
-    
-    
-    
-    """Output: h*w matrix showing the folded protein and the list of aminoacid location in order of bonds"""    
-    for row in matrix[0].get_matrix():
-        print (row)
-    print(matrix[1].protein)
-    plt.imshow(matrix[0].get_matrix(), cmap=plt.cm.bwr)
-    plt.show()
+
+    # make plot
+    visualizer(matrix[0], matrix[1])
     
 if __name__ == "__main__":
     main()
