@@ -25,27 +25,27 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
         # from connections, find the best connection (high energy stability)
             # get connections
         options = connections.connections
-        print(options)
+        
 
         change = False
         for key in options:
-            print(key)
+            
             if key == "up":
                 # check up right left
                 # if coordinaat van up + up == H: choose connection
-                if matrix.get_matrix()[amino_acid.row + 2][amino_acid.column] == "H":
+                if matrix.get_matrix()[amino_acid.row + 2][amino_acid.column] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van up + right == H: choose connection
-                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column + 1] == "H":
+                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column + 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van up + left == H: choose connection
-                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column - 1] == "H":
+                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column - 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
@@ -53,19 +53,19 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
             if key == "down":
                 # check down right left
                 # if coordinaat van down + down == H: choose connection
-                if matrix.get_matrix()[amino_acid.row - 2][amino_acid.column] == "H":
+                if matrix.get_matrix()[amino_acid.row - 2][amino_acid.column] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van down + right == H: choose connection
-                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column + 1] == "H":
+                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column + 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van down + left == H: choose connection
-                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column - 1] == "H":
+                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column - 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
@@ -74,19 +74,19 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
             if key == "left":
                 # check up down left
                 # if coordinaat van left + left == H: choose connection
-                if matrix.get_matrix()[amino_acid.row][amino_acid.column - 2] == "H":
+                if matrix.get_matrix()[amino_acid.row][amino_acid.column - 2] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van up + left == H: choose connection
-                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column - 1] == "H":
+                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column - 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van down + left == H: choose connection
-                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column - 1] == "H":
+                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column - 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
@@ -94,23 +94,24 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
             if key == "right":
                 # check up right down
                 # if coordinaat van right + right == H: choose connection
-                if matrix.get_matrix()[amino_acid.row][amino_acid.column + 2] == "H":
+                if matrix.get_matrix()[amino_acid.row][amino_acid.column + 2] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van up + right == H: choose connection
-                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column + 1] == "H":
+                if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column + 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
 
                 # if coordinaat van down + right == H: choose connection
-                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column + 1] == "H":
+                if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column + 1] == 1:
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
-        
+                              
+        print(change)
         # if no updates to amino_acid made, make a random step
         if change == False:
             step = connections.get_random_connection()

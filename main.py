@@ -13,8 +13,8 @@ def main():
     # set initial values
     height = 30
     width = 30
-    protein_string = ["H","H","P","H","H","H","P","H","P","H","H","H","P","H"]
-    #protein_string = [1,1,2,1,1,1,2,1,2,1,1,1,2,1]
+    #protein_string = ["H","H","P","H","H","H","P","H","P","H","H","H","P","H"]
+    protein_string = [1,1,2,1,1,1,2,1,2,1,1,1,2,1]
     
     # create matrix object
     initial_matrix = Matrix(width,height)    
