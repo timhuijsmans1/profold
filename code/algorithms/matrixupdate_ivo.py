@@ -8,21 +8,20 @@ def matrix_updater(matrix, protein_string, amino_acid, protein, connections):
     # place all other amino acids in the string on a random connected point
     print(protein_string)
     for value in protein_string:    
-        
-        
+
         # check available positions in the x dimension
         if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column] == 0:
-            connections.set_connections("up", 1, 0)
+            connections.set_connections("right", 1, 0)
         
         if matrix.get_matrix()[amino_acid.row - 1][amino_acid.column] == 0:
-            connections.set_connections("down", -1, 0)
+            connections.set_connections("left", -1, 0)
         
         # check available posisitions in the y dimension    
         if matrix.get_matrix()[amino_acid.row][amino_acid.column + 1] == 0:
-            connections.set_connections("right", 0, 1)
+            connections.set_connections("up", 0, 1)
             
         if matrix.get_matrix()[amino_acid.row][amino_acid.column - 1] == 0:
-            connections.set_connections("left", 0, -1)
+            connections.set_connections("down", 0, -1)
             
         # pick a random connection from the connections
         step = connections.get_random_connection()
