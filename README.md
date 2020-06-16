@@ -13,18 +13,22 @@ pip install numpy 1.18.5
 pip install matplotlib 3.2.1
 ```
 ## Usage 
-You can type in an integer ranging from 1-2 to use a specific protein string, after that you can specify the algorithm you would like to run.
+Type een integer tussen1-2 om te kiezen welke string je wilt gebruiken, daarna voer je het algoritme wat je wilt gebruiken in.
 ```command
+Example:
+1: HHPHHHPHPHHHPH
+2: HPHPPHHPHPPHPHHPPHPH
 python main.py 1 greedy
 python3 main.py 2 random
 ```
 ### Structuur
 
-Hier kan de structuur die wij hebben aangehouden bij ons project:
+Hier kan men de structuur zien die wij hebben aangehouden bij ons project:
 
 - **/code**: bevat alle code van dit project
   - **/code/algorithms**: bevat de code voor algoritmes
   - **/code/classes**: bevat de benodigde classes voor deze case
+  - **/code/helpers**: bevat ondersteunende functies voor main
   - **/code/visualisation**: bevat de code voor de visualisatie
 
 ## Auteurs
