@@ -1,12 +1,11 @@
 import random
-import numpy as np
 
 
 def matrix_updater(matrix, protein_string, amino_acid, protein, connections):    
     """Update the matrix with the remaining values of the protein string"""
     
     # place all other amino acids in the string on a random connected point
-    print(protein_string)
+
     for value in protein_string:    
         
         
@@ -23,7 +22,8 @@ def matrix_updater(matrix, protein_string, amino_acid, protein, connections):
             
         if matrix.get_matrix()[amino_acid.row][amino_acid.column - 1] == 0:
             connections.set_connections("left", 0, -1)
-            
+        
+        print(connections.get_random_connection())
         # pick a random connection from the connections
         step = connections.get_random_connection()
         

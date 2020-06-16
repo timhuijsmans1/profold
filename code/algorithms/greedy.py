@@ -111,7 +111,6 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
                     change = True
                     break
                               
-        print(change)
         # if no updates to amino_acid made, make a random step
         if change == False:
             step = connections.get_random_connection()

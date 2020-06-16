@@ -5,7 +5,6 @@ def visualizer(matrix, protein):
     """Output: h*w matrix showing the folded protein and the
      list of aminoacid location in order of bonds"""    
 
-    #plt.imshow(matrix.get_matrix(), cmap=plt.cm.bwr)
     score = protein.score_function()[0]
     neighbours = protein.score_function()[1]
 
@@ -38,7 +37,7 @@ def visualizer(matrix, protein):
     plt.xticks(np.arange(10,20,1.0))
     plt.yticks(np.arange(10,20,1.0))
     plt.grid(True)
-    plt.title("greedy fold")
+    plt.title("random fold")
     plt.suptitle(f"score: {score}")
 
     plt.show()  

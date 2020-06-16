@@ -27,9 +27,6 @@ class Protein:
 
                     # only proceed if amino acid or not the same or sequential 
                     if amino_acid != next_amino_acid and abs(self.protein.index(amino_acid)-self.protein.index(next_amino_acid)) != 1:
-                        print(amino_acid, next_amino_acid)
-                        #print(abs(amino_acid[0] - next_amino_acid[0]), abs(amino_acid[1] - next_amino_acid[1]))
-                        #print()
                         
                         # if they are next to eachother, increase stability
                         if (abs(amino_acid[0] - next_amino_acid[0]) == 1 and abs(amino_acid[1] - next_amino_acid[1]) == 0) or (abs(amino_acid[1] - next_amino_acid[1]) == 1 and abs(amino_acid[0] - next_amino_acid[0]) == 0):
