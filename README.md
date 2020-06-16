@@ -17,28 +17,16 @@ pip install
 python main.py
 python3 main.py
 ```
+### Structuur
 
-### code
-De volgend folders zijn te vinden in code.
+Hier kan de structuur die wij hebben aangehouden bij ons project:
 
-#### algorithms
-In deze folder zijn onze algoritmes te vinden. Een toelichting over de aparte algoritmes zal onder aan de pagina te zien zijn.
+- **/code**: bevat alle code van dit project
+  - **/code/algorithms**: bevat de code voor algoritmes
+  - **/code/classes**: bevat de benodigde classes voor deze case
+  - **/code/visualisation**: bevat de code voor de visualisatie
 
-#### classes
-In de classes folder zal je de classes vinden waar onze algoritmes uit opgebouwd zijn. 
-protein class:  
-amminoacid class:
-matrix:
-connection:
-
-#### visualizations
-In deze map staan de functies die wij gebruiken om onze algoritme uitkomsten te visualizeren in een 2D plot.
-
-## Getting Started
-```command 
-pip install de requirments.txt
-```
-
-```command
-python main.py // python 3 main.py
-```
+## Auteurs
+- Tim huijsmans
+- Ivo van der Zeyst
+- Willem Steenstra Toussaint
