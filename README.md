@@ -7,27 +7,26 @@ lowest energy state van onze proteïne zodat deze stabiel mogelijk blijft. Door 
 
 Het doel voor deze case is om verschillende algoritmes te gebruiken en specifieke heuristieken toe te passen om tot de best vouwingen(folds) in onze proteins te komen.
 
-### code
-De volgend folders zijn te vinden in code.
-
-#### algorithms
-In deze folder zijn onze algoritmes te vinden. Een toelichting over de aparte algoritmes zal onder aan de pagina te zien zijn.
-
-#### classes
-In de classes folder zal je de classes vinden waar onze algoritmes uit opgebouwd zijn. 
-protein class:  
-amminoacid class:
-matrix:
-connection:
-
-#### visualizations
-In deze map staan de functies die wij gebruiken om onze algoritme uitkomsten te visualizeren in een 2D plot.
-
 ## Getting Started
 ```command 
-pip install de requirments.txt
+pip install numpy 1.18.5
+pip install matplotlib 3.2.1
 ```
 
 ```command
-python main.py // python 3 main.py
+python main.py
+python3 main.py
 ```
+### Structuur
+
+Hier kan de structuur die wij hebben aangehouden bij ons project:
+
+- **/code**: bevat alle code van dit project
+  - **/code/algorithms**: bevat de code voor algoritmes
+  - **/code/classes**: bevat de benodigde classes voor deze case
+  - **/code/visualisation**: bevat de code voor de visualisatie
+
+## Auteurs
+- Tim huijsmans
+- Ivo van der Zeyst
+- Willem Steenstra Toussaint
