@@ -1,4 +1,4 @@
-# profold
+# Profold
 programmming Theory
 case: Protein Pow(d)er
 
@@ -12,10 +12,11 @@ Het doel voor deze case is om verschillende algoritmes te gebruiken en specifiek
 pip install numpy 1.18.5
 pip install matplotlib 3.2.1
 ```
-
+## Usage 
+You can type in an integer ranging from 1-2 to use a specific protein string, after that you can specify the algorithm you would like to run.
 ```command
-python main.py
-python3 main.py
+python main.py 1 greedy
+python3 main.py 2 random
 ```
 ### Structuur
 
