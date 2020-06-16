@@ -18,7 +18,7 @@ class Protein:
     def score_function(self):
         """Check the score for all H amino acid pairs, only if not a P amino acid"""
         stability = 0
-
+        coordinates = []
         for amino_acid in self.protein:
             for next_amino_acid in self.protein:
                 
@@ -33,10 +33,10 @@ class Protein:
                         
                         # if they are next to eachother, increase stability
                         if (abs(amino_acid[0] - next_amino_acid[0]) == 1 and abs(amino_acid[1] - next_amino_acid[1]) == 0) or (abs(amino_acid[1] - next_amino_acid[1]) == 1 and abs(amino_acid[0] - next_amino_acid[0]) == 0):
-                            
+                            coordinates.append([amino_acid[0],next_amino_acid[0],amino_acid[1],next_amino_acid[1]])
                             stability += 1
         
-        return -int(stability/2)
+        return -int(stability/2), coordinates
 
 
 
