@@ -129,4 +129,6 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
         # clear out connections  
         connections.clear_connections()
 
+    print(protein.score_function())
+
     return matrix, protein
