@@ -33,7 +33,7 @@ def main():
     initial_matrix = Matrix(width, height)
     
     # create the first amino acid object with coordinates in the middle of the matrix    
-    amino_acid = AminoAcid(height/2, width/2, protein_string[0])
+    amino_acid = AminoAcid(height/2, width/2, protein_string_converted[0])
     
     # add coordinates and value to protein
     protein = Protein()
@@ -48,14 +48,14 @@ def main():
     #matrix = matrix_updater(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
     # --------------------------- Greedy construction --------------------------
-    #greed = greedy(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+    greed = greedy(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
     # --------------------------- depth search construction --------------------------
-    depth = depth_first_search(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+    #depth = depth_first_search(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
     # make plot
-    visualizer(depth[0], depth[1])
-    print(depth[2])
+    visualizer(greed[0], greed[1])
+    #print(depth[2])
     
 if __name__ == "__main__":
     main()
