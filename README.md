@@ -9,8 +9,8 @@ Het doel voor deze case is om verschillende algoritmes te gebruiken en specifiek
 
 ## Getting Started
 ```command 
-pip install numpy==1.18.5
-pip install
+pip install numpy 1.18.5
+pip install matplotlib 3.2.1
 ```
 
 ```command
