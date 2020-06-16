@@ -53,6 +53,9 @@ def main():
     # --------------------------- depth search construction --------------------------
     #depth = depth_first_search(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
+    #---------------------------- Breadth search construction -------------------------------------
+    #breadth = breadth_first(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+
     # make plot
     visualizer(greed[0], greed[1])
     #print(depth[2])
