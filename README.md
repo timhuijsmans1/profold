@@ -7,6 +7,17 @@ lowest energy state van onze proteïne zodat deze stabiel mogelijk blijft. Door 
 
 Het doel voor deze case is om verschillende algoritmes te gebruiken en specifieke heuristieken toe te passen om tot de best vouwingen(folds) in onze proteins te komen.
 
+## Getting Started
+```command 
+pip install numpy==1.18.5
+pip install
+```
+
+```command
+python main.py
+python3 main.py
+```
+
 ### code
 De volgend folders zijn te vinden in code.
 
