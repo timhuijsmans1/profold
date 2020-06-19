@@ -6,9 +6,10 @@ from code.classes.connection import Connection
 from code.helpers.matrixinit import matrix_initializer
 from code.helpers.stringconverter import string_converter
 
-from code.algorithms.matrixupdate import matrix_updater
+from code.algorithms.random import random_algorithm
 from code.algorithms.greedy import greedy
 from code.algorithms.depth import depth_first_search
+#from code.algorithms.hillclimb import hill_climb
 
 from code.visualizations.visualize import visualizer
 
@@ -46,7 +47,7 @@ def main(string_input, algorithm_input):
     
     # -------------------- Random protein construction -------------------------
     if algorithm_input == "random":
-        matrix = matrix_updater(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+        matrix = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
     # ----------------------- Greedy construction ------------------------------
     if algorithm_input == "greedy":
@@ -56,11 +57,17 @@ def main(string_input, algorithm_input):
     if algorithm_input == "depth-first":
         matrix = depth_first_search(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
-    #---------------------------- Breadth search construction -------------------------------------
+    # ----------------------- Breadth search construction ----------------------
     #breadth = breadth_first(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
+    # ------------------------- Hill climber algorithm -------------------------
+
     # make plot
+    print(matrix[1].get_protein())
+    for row in matrix[0].get_matrix():    
+        print(row)
     visualizer(matrix[0], matrix[1])
+    
     
 if __name__ == "__main__":
     if len(argv) != 3:
@@ -72,7 +79,7 @@ if __name__ == "__main__":
     if string_input not in [1,2]:
         print("please choose one of the following strings by integer:\n 1: HHPHHHPHPHHHPH \n 2: HPHPPHHPHPPHPHHPPHPH")
         quit()
-    if argv[2].lower() not in ["greedy", "random", "depth-first"]:
+    if argv[2].lower() not in ["greedy", "random", "depth-first", "hillclimb"]:
         print("please choose one of the following algorithms: \n random \n greedy \n depth-first")
         quit()
 

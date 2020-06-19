@@ -9,7 +9,7 @@ class Protein:
     
     # add amino acid to a list that defines the protein
     def add_amino_acid(self, row, column, value):
-        self.protein.append([row, column, value])
+        self.protein.append([column, row, value])
         return self.protein
         
     def get_protein(self):

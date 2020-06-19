@@ -1,6 +1,5 @@
 """Random matrix generator with a few H's and P's"""
 import random
-import numpy as np
 
 
 def matrix_initializer(initial_matrix, amino_acid, protein):
