@@ -5,6 +5,7 @@ class Matrix:
     def __init__(self, width, height):
         # initiate matrix with 0's
         self.matrix = [[0]*width for n in range(height)]
+        self.protein = []
     
     def update_matrix(self, row, column, value):
         self.matrix[row][column] = value
