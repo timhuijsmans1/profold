@@ -6,6 +6,7 @@ import numpy as np
 
 from code.classes.matrix import Matrix
 
+
 def breadth_first(matrix, protein_string, amino_acid, protein, connections):
 
     def graph(width, height):
@@ -47,9 +48,6 @@ def breadth_first(matrix, protein_string, amino_acid, protein, connections):
 
     new_graph = copy.deepcopy(neighbours_graph)
 
-    #for key, value in matrix_blue_pill.items():
-    #    print(str(key) + ': ' + str(value))
-
     Protein_String = protein_string
 
     Amino_Acid = amino_acid
@@ -66,13 +64,12 @@ def breadth_first(matrix, protein_string, amino_acid, protein, connections):
     stack = Queue()
 
     stack.put(Protein.get_protein()[0])
+
+    # ff correct doen
     visited.add((15, 15))
     #stack.append[]
 
     i = 0
-
-
-
 
     while stack:
 
@@ -82,7 +79,11 @@ def breadth_first(matrix, protein_string, amino_acid, protein, connections):
         #print('current: ' + str(current))
         for i, item in enumerate(neighbours_graph[(current[0], current[1])]):
 
-                #print('item iterate:' + str(item))
+            matrix.update_matrix(current[0], current[1], protein_string[i + 1])
+
+            print(matrix.get_matrix)
+
+            #print('item iterate:' + str(item))
             if item not in visited:
                 visited.add(item)
                 #print('item added:' + str(item))
@@ -99,15 +100,6 @@ def breadth_first(matrix, protein_string, amino_acid, protein, connections):
         print('counting:' + str(i) + str(stack.queue))
 
         print(len(stack.queue))
-
-        #print('final: ' + str(visited))
-
-        #eturn None
-
-        for i, value in enumerate(protein_string):
-            for 
-
-
 
     return matrix, protein
 
