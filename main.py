@@ -63,10 +63,10 @@ def main(string_input, algorithm_input):
         matrix = depth_first_search(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
     # ----------------------- Breadth search construction ----------------------
-
     if algorithm_input == "breadth-first": 
         matrix = bf.BreadthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
-        matrix.run()
+        matrix, protein = matrix.run()
+        visualizer(matrix, protein)
 
     # ------------------------- Hill climber algorithm -------------------------
     if algorithm_input == "hillclimb":
@@ -74,7 +74,7 @@ def main(string_input, algorithm_input):
         matrix = hill_climb(input_matrix[0], input_matrix[1], 3)
 
     # make plot
-    # print(matrix[1].get_protein())
+    #print(matrix[1].get_protein())
 
     #for row in matrix[0].get_matrix():    
         #print(row)
