@@ -12,6 +12,10 @@ class AminoAcid:
         self.column += column_step
         
         return self.row, self.column
+
+    def set_position(self, row, column):
+        self.row = row
+        self.column = column
     
     def update_value(self, value):
         self.value = value
