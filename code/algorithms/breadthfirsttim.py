@@ -10,11 +10,12 @@ class BreadthFirst:
         self.queue = [self.protein] 
 
     # haal de parent uit de queue, 
-    def breadth_pop(self):
+    def breadth_pop(self, length, i):
+        print(length,i)
         self.parent_protein = self.queue.pop(0)
         print("parent_protein", self.parent_protein.protein)
         return self.parent_protein # object
-
+    
     def get_last_amino(self, parent_protein):
         self.amino_acid_list = self.parent_protein.protein[-1]
         print("last amino", self.amino_acid_list)
@@ -38,10 +39,10 @@ class BreadthFirst:
 
                 # alter the child amino according to the available connections
                 self.child_amino[j] += i # change list
-                if self.child_amino not in self.protein.protein: # check if list in list
+                if self.child_amino not in self.parent_protein.protein: # check if list in list
                     
                     # make the next amino acid for the child protein
-                    self.amino_object.make_amino(self.child_amino[0], self.child_amino[1], value)
+                    self.amino_object.make_amino(self.child_amino[0], self.child_amino[1], self.protein_string[i])
                     amino_children.append(copy.deepcopy(self.amino_object))
 
         # create all the individual children and add them to the queue
@@ -66,17 +67,19 @@ class BreadthFirst:
         print(self.queue)
 
 
-        return self.queue, self.best_protein, self.lowest_score
+        return self.queue
 
     # run the object for every 
     def run(self):
         
-        for value in self.protein_string:
-            print(value)
-            parent_protein = self.breadth_pop()
+        new_queue = self.queue
+        print(self.queue[0].protein)
+        for i in range(0,14):
+            while len(new_queue[0].protein) - 1 == i:
+                parent_protein = self.breadth_pop(len(new_queue[0].protein) - 1, i)
 
-            amino = self.get_last_amino(parent_protein)
+                amino = self.get_last_amino(parent_protein)
 
-            new_queue = self.create_children(amino, value)
+                new_queue = self.create_children(amino, i)
             
         return(new_queue)
