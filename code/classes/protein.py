@@ -11,9 +11,44 @@ class Protein:
     def add_amino_acid(self, row, column, value):
         self.protein.append([column, row, value])
         return self.protein
+
+    def change_amino_acid(self, x, y, vertex):
+        self.protein[vertex][0] = x
+        self.protein[vertex][1] = y
+        return self.protein 
         
     def get_protein(self):
         return self.protein
+    
+    def set_diagonals(self, direction, x, y):
+        if direction == "down-left":
+            self.x_L = x - 1
+            self.y_L = y - 1
+            self.x_LL = x - 1
+            self.y_LL = y + 1
+            self.x_C = x
+            self.y_C = y - 1
+        if direction == "up-right":
+            self.x_L = x + 1
+            self.y_L = y + 1
+            self.x_LL = x + 1
+            self.y_LL = y - 1
+            self.x_C = x
+            self.y_C = y + 1
+        if direction == "up-left":
+            self.x_L = x - 1
+            self.y_L = y + 1
+            self.x_LL = x + 1
+            self.y_LL = y + 1
+            self.x_C = x - 1
+            self.y_C = y
+        if direction == "down-right":
+            self.x_L = x + 1
+            self.y_L = y - 1
+            self.x_LL = x - 1
+            self.y_LL = y - 1
+            self.x_C = x + 1
+            self.y_C = y
 
     def score_function(self):
         """Check the score for all H amino acid pairs, only if not a P amino acid"""

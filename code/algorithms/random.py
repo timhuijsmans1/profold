@@ -25,13 +25,10 @@ def random_algorithm(matrix, protein_string, amino_acid, protein, connections):
         
         # pick a random connection from the connections
         step = connections.get_random_connection()
-        print(step, amino_acid.row, amino_acid.column)
-        
-        amino_acid.update_value(value)
 
         # update the value and position of the amino acid
+        amino_acid.update_value(value)
         amino_acid.update_position(step[1][0], step[1][1])
-        print(amino_acid.row, amino_acid.column)
         
         # update matrix with next amino acid
         matrix.update_matrix(amino_acid.row, amino_acid.column, amino_acid.value)
@@ -40,6 +37,7 @@ def random_algorithm(matrix, protein_string, amino_acid, protein, connections):
         protein.add_amino_acid(amino_acid.row, amino_acid.column, amino_acid.value)
         
         connections.clear_connections()
+        #print(protein.get_protein())
         
     return matrix, protein
         
