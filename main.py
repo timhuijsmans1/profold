@@ -25,7 +25,7 @@ def main(string_input, algorithm_input):
         protein_string = ["H","H","P","H","H","H","P","H","P","H","H","H","P","H"]
     
     if string_input == 2:
-        protein_string = ["H","P","H","P","P","H","H","P","H","P","P","H","P","H","H","P","P","H","P","H"]
+        protein_string = ["H","P","H","P","P","H","H","P","H","P","P","H","H"]#["H","P","H","P","P","H","H","P","H","P","P","H","P","H","H","P","P","H","P","H"]
 
     if string_input == 3:
         protein_string = ["H", "H", "H", "H", "H"]
