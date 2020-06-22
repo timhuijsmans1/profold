@@ -163,6 +163,7 @@ class DepthFirst:
                 print(parent_protein.protein)
                 result = self.create_children(amino, index)
                 new_queue = result[0]
+                print(new_queue[0])
         print("best score:", result[1])
 
         return [[]], result[2]

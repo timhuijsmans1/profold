@@ -61,11 +61,12 @@ class Protein:
                 if amino_acid[2] != 2 and next_amino_acid[2] != 2:
 
                     # only proceed if amino acid or not the same or sequential 
-                    if amino_acid != next_amino_acid and abs(self.protein.index(amino_acid)-self.protein.index(next_amino_acid)) != 1:
-                        
-                        # if they are next to eachother, increase stability
-                        if (abs(amino_acid[0] - next_amino_acid[0]) == 1 and abs(amino_acid[1] - next_amino_acid[1]) == 0) or (abs(amino_acid[1] - next_amino_acid[1]) == 1 and abs(amino_acid[0] - next_amino_acid[0]) == 0):
-                            coordinates.append([amino_acid[0],next_amino_acid[0],amino_acid[1],next_amino_acid[1]])
+                    if amino_acid != next_amino_acid and abs(self.protein.index(amino_acid) - self.protein.index(next_amino_acid)) != 1:
+
+                        # if they are next to each other, increase stability
+                        if (abs(amino_acid[0] - next_amino_acid[0]) == 1 and abs(amino_acid[1] - next_amino_acid[1]) == 0) or \
+                                (abs(amino_acid[1] - next_amino_acid[1]) == 1 and abs(amino_acid[0] - next_amino_acid[0]) == 0):
+                            coordinates.append([amino_acid[0], next_amino_acid[0], amino_acid[1], next_amino_acid[1]])
                             stability += 1
         
         return -int(stability/2), coordinates
