@@ -12,7 +12,7 @@ class DepthFirst:
 
     # haal de parent uit de queue, 
     def depth_pop(self, length, index):
-        print(length,index)
+        print(length, index)
         self.parent_protein = self.queue.pop()
         print("---------------")
         
@@ -28,8 +28,8 @@ class DepthFirst:
              of the last amino acid of the parent protein"""
         
         amino_children = []
-        directions = [-1,1]
-        coordinates = [0,1]
+        directions = [-1, 1]
+        coordinates = [0, 1]
         
         # up, down, left, right
         for i in directions:
@@ -42,7 +42,7 @@ class DepthFirst:
                 # create a list of visited coordinates
                 visited = []
                 for amino in self.parent_protein.protein:
-                    visited.append([amino[0],amino[1]])
+                    visited.append([amino[0], amino[1]])
 
                 # alter the child amino according to the available connections
                 self.child_amino[j] += i # change list

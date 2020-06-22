@@ -18,10 +18,6 @@ from code.visualizations.visualize import visualizer
 from sys import argv
 
 def main(string_input, algorithm_input):
-    
-    # set initial values
-    height = 30
-    width = 30
 
     # analyse user input to choose the string and convert to numerical string
     if string_input == 1:
@@ -40,6 +36,10 @@ def main(string_input, algorithm_input):
         protein_string = ["H","H","P","H","P","H","P","H","P","H","H","H","H","P","H","P","P","P","H","P","P","P","H","P","P","P","P","H","P","P","P","H","P","P","P","H","P","H","H","H","H","P","H","P","H","P","H","P","H","H"]
         
     protein_string_converted = string_converter(protein_string)
+
+    # set initial values
+    height = 30 #int(len(protein_string_converted) * 2)
+    width = 30 #int(len(protein_string_converted) * 2)
     
     # create matrix object
     initial_matrix = Matrix(width, height)
@@ -96,7 +96,7 @@ if __name__ == "__main__":
     
     string_input = int(argv[1])
 
-    if string_input not in [1,2,3,4,5]:
+    if string_input not in [1, 2, 3, 4, 5]:
         print("please choose one of the following strings by integer:\n 1: HHPHHHPHPHHHPH \n 2: HPHPPHHPHPPHPHHPPHPH")
         quit()
 

@@ -4,7 +4,6 @@ import numpy as np
 
 def greedy(matrix, protein_string, amino_acid, protein, connections):    
     """Update the matrix with the remaining values of the protein string"""
-    
 
     for value in protein_string:
 
@@ -23,9 +22,8 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
             connections.set_connections("left", 0, -1)
         
         # from connections, find the best connection (high energy stability)
-            # get connections
+        # get connections
         options = connections.connections
-        
 
         change = False
         for key in options:
@@ -69,7 +67,6 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
                     amino_acid.update_position(options[key][0], options[key][1])
                     change = True
                     break
-
 
             if key == "left":
                 # check up down left
