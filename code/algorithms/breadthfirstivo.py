@@ -158,6 +158,15 @@ class BreadthFirst:
                 else:
                     parent_protein = self.breadth_pop(len(new_queue[0].protein) - 1, index)
 
+                    print('parent_protein: ' + str(parent_protein.protein))
+                    try:
+                        print('new_queue: ' + str(new_queue[0]))
+                        print('new_queue[0]: ' + str(new_queue[0]))
+                        print('new_queue[0].protein: ' + str(new_queue[0].protein))
+                    except IndexError:
+                        print('fcked')
+                    print('index: ' + str(index))
+
                     amino = self.get_last_amino(parent_protein)
 
                     result = self.create_children(amino, index)
