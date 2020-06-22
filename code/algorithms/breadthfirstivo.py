@@ -146,20 +146,22 @@ class BreadthFirst:
 
         for index in range(0, len(self.protein_string)):
             #print('new que: ' + str(new_queue))
+            print(index)
             while len(new_queue[0].protein) - 1 == index:
+                print(index)
                 iterate_counter += 1
                 if iterate_counter == 1:
+                    print(index)
                     parent_protein = self.breadth_pop(len(new_queue[0].protein) - 1, index)
-
+                    print(index)
                     amino = self.get_last_amino(parent_protein)
-
                     result = self.create_child(amino, index)
                     new_queue = result[0]
                 else:
                     parent_protein = self.breadth_pop(len(new_queue[0].protein) - 1, index)
-
+                    print(index)
                     amino = self.get_last_amino(parent_protein)
-
+                    print(index)
                     result = self.create_children(amino, index)
                     new_queue = result[0]
         print("best score:", result[1])

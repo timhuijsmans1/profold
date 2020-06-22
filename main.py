@@ -10,7 +10,6 @@ from code.algorithms.random import random_algorithm
 from code.algorithms.greedy import greedy
 from code.algorithms.depth import depth_first_search
 from code.algorithms import breadthfirstivo as bf
-from code.algorithms import breadthfirsttim as bf2
 from code.algorithms import depth_first as df
 from code.algorithms.hillclimb import hill_climb
 
@@ -25,7 +24,7 @@ def main(string_input, algorithm_input):
         protein_string = ["H","H","P","H","H","H","P","H","P","H","H","H","P","H"]
     
     if string_input == 2:
-        protein_string = ["H","P","H","P","P","H","H","P","H","P","P","H","H"]#["H","P","H","P","P","H","H","P","H","P","P","H","P","H","H","P","P","H","P","H"]
+        protein_string = ["H","P","H","P","P","H","H","P","H","P","P","H","P","H","H","P","P","H","P","H"]
 
     if string_input == 3:
         protein_string = ["H", "H", "H", "H", "H"]
@@ -83,11 +82,11 @@ def main(string_input, algorithm_input):
         matrix = hill_climb(input_matrix[0], input_matrix[1], 3)
 
     #make plot
-    print(matrix[1].get_protein())
+    # print(matrix[1].get_protein())
 
-    for row in matrix[0].get_matrix():    
-        print(row)
-    visualizer(matrix[0], matrix[1])
+    # for row in matrix[0].get_matrix():    
+        # print(row)
+    # visualizer(matrix[0], matrix[1])
     
     
 if __name__ == "__main__":
