@@ -25,8 +25,7 @@ class BreadthFirst:
         return self.amino_acid_list # list
 
     def create_child(self, amino_acid, index):
-        """Creates a list of all the free possible neighbours
-             of the last amino acid of the parent protein"""
+        """  """
         
         amino_children = []
         directions = [-1, 1]
@@ -124,13 +123,15 @@ class BreadthFirst:
 
             # check the score and save the lowest score and it's protein
             self.score = self.child.score_function()[0]
+            print(self.score)
 
             if self.score <= self.lowest_score:
                 self.lowest_score = copy.deepcopy(self.score)
                 self.best_protein = copy.deepcopy(self.child)
+                self.queue.append(copy.deepcopy(self.child))
 
             # append a deepcopy of the child to the queue
-            self.queue.append(copy.deepcopy(self.child))
+            #self.queue.append(copy.deepcopy(self.child))
 
         return self.queue, self.lowest_score, self.best_protein
 
