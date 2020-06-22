@@ -9,7 +9,8 @@ from code.helpers.stringconverter import string_converter
 from code.algorithms.random import random_algorithm
 from code.algorithms.greedy import greedy
 from code.algorithms.depth import depth_first_search
-from code.algorithms import breadthfirsttim as bf
+from code.algorithms import breadthfirstivo as bf
+from code.algorithms import breadthfirsttim as bf2
 from code.algorithms import depth_first as df
 from code.algorithms.hillclimb import hill_climb
 
