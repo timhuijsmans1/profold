@@ -68,6 +68,16 @@ class Protein:
                                 (abs(amino_acid[1] - next_amino_acid[1]) == 1 and abs(amino_acid[0] - next_amino_acid[0]) == 0):
                             coordinates.append([amino_acid[0], next_amino_acid[0], amino_acid[1], next_amino_acid[1]])
                             stability += 1
+
+                        #if (abs(amino_acid[0] - next_amino_acid[0]) == 3 and abs(amino_acid[1] - next_amino_acid[1]) == 0) or \
+                        #        (abs(amino_acid[1] - next_amino_acid[1]) == 3 and abs(amino_acid[0] - next_amino_acid[0]) == 0):
+                        #    coordinates.append([amino_acid[0], next_amino_acid[0], amino_acid[1], next_amino_acid[1]])
+                        #    stability += 5
+                            
+                        #if (abs(amino_acid[0] - next_amino_acid[0]) == 3 and abs(amino_acid[1] - next_amino_acid[1]) == 4) or \
+                        #        (abs(amino_acid[1] - next_amino_acid[1]) == 3 and abs(amino_acid[0] - next_amino_acid[0]) == 4):
+                        #    coordinates.append([amino_acid[0], next_amino_acid[0], amino_acid[1], next_amino_acid[1]])
+                        #    stability += 1
         
         return -int(stability/2), coordinates
 
