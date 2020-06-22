@@ -9,8 +9,8 @@ from code.helpers.stringconverter import string_converter
 from code.algorithms.random import random_algorithm
 from code.algorithms.greedy import greedy
 from code.algorithms.depth import depth_first_search
-
 from code.algorithms import breadthfirsttim as bf
+from code.algorithms import depth_first as df
 from code.algorithms.hillclimb import hill_climb
 
 from code.visualizations.visualize import visualizer
@@ -32,7 +32,13 @@ def main(string_input, algorithm_input):
 
     if string_input == 3:
         protein_string = ["H", "H", "H", "H", "H"]
+
+    if string_input == 4:
+        protein_string = ["P","P","P","H","H","P","P","H","P","P","P","P","P","H","H","H","H","H","H","H","P","P","H","H","P","P","P","P","H","H","P","P","H","P","P"]
     
+    if string_input == 5:
+        protein_string = ["H","H","P","H","P","H","P","H","P","H","H","H","H","P","H","P","P","P","H","P","P","P","H","P","P","P","P","H","P","P","P","H","P","P","P","H","P","H","H","H","H","P","H","P","H","P","H","P","H","H"]
+        
     protein_string_converted = string_converter(protein_string)
     
     # create matrix object
@@ -58,13 +64,15 @@ def main(string_input, algorithm_input):
     if algorithm_input == "greedy":
         matrix = greedy(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
 
-    # ------------------------ depth search construction -----------------------
-    if algorithm_input == "depth-first":
-        matrix = depth_first_search(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
-
-    # ----------------------- Breadth search construction ----------------------
+    # ----------------------- Breadth-search construction ----------------------
     if algorithm_input == "breadth-first": 
         matrix = bf.BreadthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
+        matrix, protein = matrix.run()
+        visualizer(matrix, protein)
+        
+    # ----------------------- Depth-first search construction ----------------------
+    if algorithm_input == "depth-first": 
+        matrix = df.DepthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
         matrix, protein = matrix.run()
         visualizer(matrix, protein)
 
@@ -73,12 +81,12 @@ def main(string_input, algorithm_input):
         input_matrix = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
         matrix = hill_climb(input_matrix[0], input_matrix[1], 3)
 
-    # make plot
-    #print(matrix[1].get_protein())
+    #make plot
+    print(matrix[1].get_protein())
 
-    #for row in matrix[0].get_matrix():    
-        #print(row)
-    #visualizer(matrix[0], matrix[1])
+    for row in matrix[0].get_matrix():    
+        print(row)
+    visualizer(matrix[0], matrix[1])
     
     
 if __name__ == "__main__":
@@ -88,7 +96,7 @@ if __name__ == "__main__":
     
     string_input = int(argv[1])
 
-    if string_input not in [1,2,3]:
+    if string_input not in [1,2,3,4,5]:
         print("please choose one of the following strings by integer:\n 1: HHPHHHPHPHHHPH \n 2: HPHPPHHPHPPHPHHPPHPH")
         quit()
 
