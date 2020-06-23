@@ -7,13 +7,16 @@ def pull_move(protein_string, try_index):
     old_protein = protein_string.protein
     new_protein_string = copy.deepcopy(protein_string)
     
+    # set counter and repeat the pull move 100 times
     counter = 0
     while counter < 100:
         
+        # set new protein to work the pull on
         new_protein = copy.deepcopy(new_protein_string.protein)
 
         occupied_coordinates = []
 
+        # set a list of coordinates occupied by the current protein
         for amino in new_protein:
             occupied_coordinates.append([amino[0],amino[1]])
         
@@ -127,9 +130,11 @@ def pull_move(protein_string, try_index):
                     else:
                         vertex_index = random.randint(0, len(new_protein) - 1) 
         
+        # set all the neighbours and check the validity of the string
         neighbours = new_protein_string.get_neighbours()
         valid = new_protein_string.is_valid(neighbours)
 
+        # keep shifting the proteins up the chain to till it's valid again
         while valid == False:
             for j in range(len(new_protein)):
                 
@@ -139,7 +144,7 @@ def pull_move(protein_string, try_index):
                 valid = new_protein_string.is_valid(new_neighbours)
 
                 if valid == True:
-                    
+                    # stop shifting as soon as the string is valid
                     break
         counter += 1
         old_protein = copy.deepcopy(new_protein_string.protein)
