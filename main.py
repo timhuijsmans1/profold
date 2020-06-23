@@ -71,14 +71,14 @@ def main(string_input, algorithm_input):
     # ------------------------- Hill climber algorithm -------------------------
     if algorithm_input == "hillclimb":
         input_matrix = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
-        matrix = hill_climb(input_matrix[0], input_matrix[1], 3)
+        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 10000)
 
     # make plot
     #print(matrix[1].get_protein())
 
     #for row in matrix[0].get_matrix():    
         #print(row)
-    #visualizer(matrix[0], matrix[1])
+    visualizer(matrix, protein)
     
     
 if __name__ == "__main__":

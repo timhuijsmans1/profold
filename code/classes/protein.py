@@ -1,4 +1,5 @@
 import math
+import copy
 
 class Protein:
     """Keeps track of all the amino acids placed in the grid
@@ -49,6 +50,52 @@ class Protein:
             self.y_LL = y - 1
             self.x_C = x + 1
             self.y_C = y
+    
+    def get_neighbours(self):
+        """Returns all 4 neighbouring coordinates for an amino acid"""
+        
+        self.neighbours = []
+        directions = [-1,1]
+        coordinates = [0,1]
+
+        # loop through all amino acids in the protein and return their neighbours
+        for amino in self.protein:
+            amino_neighbours = []
+
+            # make neighbours
+            for i in directions:
+                for j in coordinates:
+                    add_amino = copy.deepcopy(amino)
+                    add_amino[j] += i
+                    amino_neighbours.append([add_amino[0],add_amino[1]])
+            
+            # add the neighbours of one amino acid to all neighbours
+            self.neighbours.append(amino_neighbours)
+
+        return self.neighbours
+
+
+    def is_valid(self, possible_neighbours):
+        """Checks if the previous and followinf amino acid in the string actually are possible
+        neighbours or lie further away"""
+        
+        valid = True
+        for i in range(len(self.protein)):
+            # checks the start of the string for one up
+            if i == 0:
+                if [self.protein[i + 1][0],self.protein[i + 1][1]]  not in possible_neighbours[i]:
+                    return False
+            
+            # checks the tail of the string for one down
+            elif i == len(self.protein) - 1:
+                if [self.protein[i - 1][0],self.protein[i - 1][1]]  not in possible_neighbours[i]:
+                    return False
+            
+            # checks all middle parts of the string for both up and down
+            else:
+                if ([self.protein[i + 1][0],self.protein[i + 1][1]]  not in possible_neighbours[i]) or ([self.protein[i - 1][0],self.protein[i - 1][1]]  not in possible_neighbours[i]):
+                    return False
+        return valid
 
     def score_function(self):
         """Check the score for all H amino acid pairs, only if not a P amino acid"""

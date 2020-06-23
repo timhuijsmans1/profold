@@ -15,7 +15,6 @@ class BreadthFirst:
         print(length,index)
         self.parent_protein = self.queue.pop(0)
         print("---------------")
-        
         return self.parent_protein # object
     
     def get_last_amino(self, parent_protein):

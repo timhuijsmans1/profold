@@ -4,22 +4,34 @@ from code.helpers.pull_move import pull_move
 
 def hill_climb(matrix, protein, iterations):
 
-    old_protein = copy.deepcopy(protein)
-    old_score = old_protein.score_function()
-    all_time_low = old_score
+    all_time_low = copy.deepcopy(protein.score_function()[0])
 
     for i in range(iterations):
         
-        # -------------!!!!!!!!!!!! original protein string is used as input for the fold again, we want the new protein string to become the input--------!!!!!!
-        test_protein = copy.deepcopy(old_protein)
-        plot_protein = pull_move(test_protein, matrix)
-        old_protein = plot_protein
+        # set the input score to the score of the current protein
+        input_score = protein.score_function()[0]
 
-        # check the score of the molecule
-        #if test_protein.score_function() < old_score and test_protein.score_function() < all_time_low:
-        #    old_score = test_protein.score_function()
-        #    all_time_low = test_protein.score_function()
-        #    old_protein = test_protein
+        # make a testable copy of the input protein    
+        new_protein = copy.deepcopy(protein)
 
-    # return the new molecule if a better one was found, otherwise return the old molecule
-    return matrix,plot_protein
+        # make a pull change to the testable copy
+        new_protein = pull_move(new_protein)
+
+        print("protein:", protein.protein)
+        print("new_protein:", new_protein.protein)
+
+        # accept the new protein if it's equal to or better than the previous protein
+        if new_protein.score_function()[0] <= input_score:
+            protein = copy.deepcopy(new_protein)
+            
+        if new_protein.score_function()[0] <= all_time_low:
+            all_time_low = copy.deepcopy(new_protein.score_function()[0])
+            best_protein = copy.deepcopy(new_protein)
+
+        
+    
+    print(all_time_low)
+    return matrix, best_protein
+    
+
+

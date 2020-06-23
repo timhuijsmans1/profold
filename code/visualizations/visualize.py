@@ -37,7 +37,7 @@ def visualizer(matrix, protein):
     plt.xticks(np.arange(8,22,1.0))
     plt.yticks(np.arange(8,22,1.0))
     plt.grid(True)
-    plt.title("random fold")
+    plt.title("hill-climb fold")
     plt.suptitle(f"score: {score}")
 
     plt.show()  
