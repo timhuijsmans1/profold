@@ -25,7 +25,10 @@ class BreadthFirst:
         return self.amino_acid_list # list
 
     def create_child(self, amino_acid, index):
-        """  """
+        """
+        for the first time a child needs to be created, this method needs to be run instead of create_children, in order
+        to cut the matrix into 1/4 and thus preventing allot of mirrored protein strings
+        """
         
         amino_children = []
         directions = [-1, 1]
@@ -80,8 +83,9 @@ class BreadthFirst:
         return self.queue, self.lowest_score, self.best_protein
 
     def create_children(self, amino_acid, index):
-        """Creates a list of all the free possible neighbours
-             of the last amino acid of the parent protein"""
+        """
+        Creates a list of all the free possible neighbours of the last amino acid of the parent protein
+        """
 
         amino_children = []
         directions = [-1, 1]

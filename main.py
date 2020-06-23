@@ -27,7 +27,7 @@ def main(string_input, algorithm_input):
         protein_string = ["H","P","H","P","P","H","H","P","H","P","P","H","P","H","H","P","P","H","P","H"]
 
     if string_input == 3:
-        protein_string = ["H", "H", "H", "H", "H"]
+        protein_string = ["H", "H", "H", "H", "H", "C", "C", "C", "C", "C"]#["H", "H", "H", "H", "H"]
 
     if string_input == 4:
         protein_string = ["P","P","P","H","H","P","P","H","P","P","P","P","P","H","H","H","H","H","H","H","P","P","H","H","P","P","P","P","H","H","P","P","H","P","P"]
@@ -82,11 +82,12 @@ def main(string_input, algorithm_input):
     # ------------------------- Hill climber algorithm -------------------------
     if algorithm_input == "hillclimb":
         input_matrix = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
-        matrix = hill_climb(input_matrix[0], input_matrix[1], 3)
+        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 10000)
 
     #make plot
     if algorithm_input in ['random_algorithm', 'greedy']:
 
+<<<<<<< HEAD
         print(matrix[1].get_protein())
 
         for row in matrix[0].get_matrix():    
@@ -94,6 +95,12 @@ def main(string_input, algorithm_input):
         
         visualizer(matrix[0], matrix[1], algorithm_input)
     
+=======
+    #for row in matrix[0].get_matrix():    
+        #print(row)
+    visualizer(matrix, protein)
+ 
+>>>>>>> 24b114fe27dae04d5bf2b933d7a897310faa88b0
     
 if __name__ == "__main__":
     if len(argv) != 3:
