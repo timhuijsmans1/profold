@@ -7,9 +7,8 @@ def hill_climb(matrix, protein, iterations, tries):
     old_protein = copy.deepcopy(protein)
 
     for j in range(tries):
+        print("climb",j+1,"van de",tries, "is bezig, even geduld")
         check_protein = copy.deepcopy(old_protein)
-        print(check_protein)
-        print("old:",check_protein.protein)
         all_time_low = copy.deepcopy(check_protein.score_function()[0])
 
         for i in range(iterations):
@@ -31,11 +30,9 @@ def hill_climb(matrix, protein, iterations, tries):
                 all_time_low = copy.deepcopy(new_protein.score_function()[0])
                 best_protein = copy.deepcopy(new_protein)
 
-        print("new",new_protein.protein)
         scores.append(all_time_low)
 
-        print("try",j,"uit",tries)
-    print(scores)
+    print("laagste scores van de climbs:", scores)
     #print(all_time_low)
     return matrix, best_protein
     
