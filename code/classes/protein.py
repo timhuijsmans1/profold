@@ -13,11 +13,14 @@ class Protein:
         self.protein.append([column, row, value])
         return self.protein
 
+    # change the amino acid for hillclimber
     def change_amino_acid(self, x, y, vertex):
         self.protein[vertex][0] = x
         self.protein[vertex][1] = y
+
         return self.protein 
-        
+    
+    # return protein
     def get_protein(self):
         return self.protein
     
@@ -51,6 +54,7 @@ class Protein:
             self.x_C = x + 1
             self.y_C = y
     
+    # returns all 4 neighbouring coordinates for an amino acid
     def get_neighbours(self):
         """Returns all 4 neighbouring coordinates for an amino acid"""
         
@@ -107,7 +111,7 @@ class Protein:
                 # only proceed if the amino acids are non P
                 if amino_acid[2] != 2 and next_amino_acid[2] != 2:
 
-                    # only proceed if amino acid or not the same or sequential 
+                    # only proceed if the amino acid is not the same or sequential 
                     if amino_acid != next_amino_acid and abs(self.protein.index(amino_acid) - self.protein.index(next_amino_acid)) != 1:
 
                         # if they are next to each other, increase stability

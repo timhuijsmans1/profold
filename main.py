@@ -8,9 +8,7 @@ from code.helpers.stringconverter import string_converter
 
 from code.algorithms.random import random_algorithm
 from code.algorithms.greedy import greedy
-from code.algorithms.depth import depth_first_search
-from code.algorithms import breadthfirstivo as bf
-from code.algorithms import depth_first as df
+from code.algorithms import breadthfirstheur as bf
 from code.algorithms.hillclimb import hill_climb
 
 from code.visualizations.visualize import visualizer
@@ -77,14 +75,6 @@ def main(string_input, algorithm_input):
     if algorithm_input == "breadth-first": 
         matrix = bf.BreadthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
         matrix, protein = matrix.run()
-        
-    # ----------------------- Depth-first search construction ----------------------
-    if algorithm_input == "depth-first":
-        try:
-            matrix = df.DepthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
-            matrix, protein = matrix.run()
-        except IndexError:
-            print('finished')
 
     # ------------------------- Hill climber algorithm -------------------------
     if algorithm_input == "hillclimb":
@@ -93,20 +83,29 @@ def main(string_input, algorithm_input):
         
     visualizer(matrix, protein, algorithm_input)
 
-    
+# call main function and process the command line arguments    
 if __name__ == "__main__":
+
+    # return error if the command line arguments are to few
     if len(argv) != 3:
         print("Please provide a protein string and an algorithm in the command line")
         quit()
     
+    # process the second argument as an integer for usage below
     string_input = int(argv[1])
 
+    # check if the given
     if string_input not in [1, 2, 3, 4, 5, 6, 7, 8]:
-        print("please choose one of the following strings by integer:\n 1: HHPHHHPHPHHHPH \n 2: HPHPPHHPHPPHPHHPPHPH")
+        print("please choose one of the following strings by integer:\n1: HHPHHHPHPHHHPH \n2: HPHPPHHPHPPHPHHPPHPH \n3: PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP \n" + \
+        "4: HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH \n5: PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP \n"+ \
+        "6: CPPCHPPCHPPCPPHHHHHHCCPCHPPCPCHPPHPC \n" + \
+        "7: HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH \n" + \
+        "8: HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH")
         quit()
 
-    if argv[2].lower() not in ["greedy", "random", "depth-first", "hillclimb", "breadth-first"]:
-        print("please choose one of the following algorithms: \n random \n greedy \n depth-first \n hillclimb")
+    # check the algorithm input
+    if argv[2].lower() not in ["greedy", "random", "hillclimb", "breadth-first"]:
+        print("please choose one of the following algorithms: \n random \n greedy \n breadth-first \n hillclimb")
         quit()
 
     main(string_input, argv[2].lower())

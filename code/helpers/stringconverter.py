@@ -1,6 +1,7 @@
 def string_converter(string):
     """converts the string values in a protein string
-    to numerical values in order to process the information"""
+    to numerical values in order to process the information
+    """
     
     protein_string_converted = []
 

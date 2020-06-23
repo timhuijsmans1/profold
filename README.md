@@ -12,7 +12,7 @@ Het doel voor deze case is om verschillende algoritmes te gebruiken en specifiek
 pip install -r requirements.txt
 ```
 ## Usage 
-Type een integer tussen 1-4 om te kiezen welke string je wilt gebruiken, daarna voer je het algoritme wat je wilt gebruiken in.
+Type een integer tussen 1-8 om te kiezen welke string je wilt gebruiken, daarna voer je het algoritme wat je wilt gebruiken in.
 ```command
 Example:
 1: HHPHHHPHPHHHPH
