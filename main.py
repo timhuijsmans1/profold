@@ -21,19 +21,28 @@ def main(string_input, algorithm_input):
 
     # analyse user input to choose the string and convert to numerical string
     if string_input == 1:
-        protein_string = ["H","H","P","H","H","H","P","H","P","H","H","H","P","H"]
+        protein_string = ["H", "H", "P", "H", "H", "H", "P", "H", "P", "H", "H", "H", "P", "H"]
     
     if string_input == 2:
-        protein_string = ["H","P","H","P","P","H","H","P","H","P","P","H","P","H","H","P","P","H","P","H"]
+        protein_string = ["H", "P", "H", "P", "P", "H", "H", "P", "H", "P", "P", "H", "P", "H", "H", "P", "P", "H", "P", "H"]
 
     if string_input == 3:
-        protein_string = ["H", "H", "H", "H", "H", "C", "C", "C", "C", "C"]#["H", "H", "H", "H", "H"]
+        protein_string = ["P", "P", "P", "H", "H", "P", "P", "H", "P", "P", "P", "P", "P", "H", "H", "H", "H", "H", "H", "H", "P", "P", "H", "H", "P", "P", "P", "P", "H", "H", "P", "P", "H", "P", "P"]
 
     if string_input == 4:
-        protein_string = ["P","P","P","H","H","P","P","H","P","P","P","P","P","H","H","H","H","H","H","H","P","P","H","H","P","P","P","P","H","H","P","P","H","P","P"]
+        protein_string = ["H", "H", "P", "H", "P", "H", "P", "H", "P", "H", "H", "H", "H", "P", "H", "P", "P", "P", "H", "P", "P" , "P", "H", "P", "P", "P", "P", "H", "P", "P", "P", "H", "P", "P", "P", "H", "P", "H", "H", "H", "H", "P", "H", "P", "H", "P", "H", "P", "H", "H"]
     
     if string_input == 5:
-        protein_string = ["H","H","P","H","P","H","P","H","P","H","H","H","H","P","H","P","P","P","H","P","P","P","H","P","P","P","P","H","P","P","P","H","P","P","P","H","P","H","H","H","H","P","H","P","H","P","H","P","H","H"]
+        protein_string = ["P", "P", "C", "H", "H", "P", "P", "C", "H", "P", "P", "P", "P", "C", "H", "H", "H", "H", "C", "H", "H", "P", "P", "H", "H", "P", "P", "P", "H", "H", "P", "P", "H", "P", "P"]
+
+    if string_input == 6:
+        protein_string = ["C", "P", "P", "C", "H", "P", "P", "C", "H", "P", "P", "C", "P", "P", "H", "H", "H", "H", "H", "H", "C", "C", "P", "C", "H", "P", "P", "C", "P", "C", "H", "P", "P", "H", "P", "C"]
+
+    if string_input == 7:
+        protein_string = ["H", "C", "P", "H", "P", "C", "P", "H", "P", "C", "H", "C", "H", "P", "H", "P", "P", "P", "H", "P", "P", "P", "H", "P", "P", "P", "P", "H", "P", "C", "P", "H", "P", "P", "P", "H", "P", "H", "H", "H", "C", "C", "H", "C", "H", "C", "H", "C", "H", "H"]
+
+    if string_input == 8:
+        protein_string = ["H", "C", "P", "H", "P", "H", "P", "H", "C", "H", "H", "H", "H", "P", "C", "C", "P", "P", "H", "P", "P", "P", "H", "P", "P", "P", "P", "C", "P", "P", "P", "H", "P", "P", "P", "H", "P", "H", "H", "H", "H", "C", "H", "P", "H", "P", "H", "P", "H", "H"]  
         
     protein_string_converted = string_converter(protein_string)
 
@@ -92,7 +101,7 @@ if __name__ == "__main__":
     
     string_input = int(argv[1])
 
-    if string_input not in [1, 2, 3, 4, 5]:
+    if string_input not in [1, 2, 3, 4, 5, 6, 7, 8]:
         print("please choose one of the following strings by integer:\n 1: HHPHHHPHPHHHPH \n 2: HPHPPHHPHPPHPHHPPHPH")
         quit()
 
