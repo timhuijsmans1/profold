@@ -17,9 +17,6 @@ def hill_climb(matrix, protein, iterations):
         # make a pull change to the testable copy
         new_protein = pull_move(new_protein)
 
-        print("protein:", protein.protein)
-        print("new_protein:", new_protein.protein)
-
         # accept the new protein if it's equal to or better than the previous protein
         if new_protein.score_function()[0] <= input_score:
             protein = copy.deepcopy(new_protein)
@@ -27,9 +24,8 @@ def hill_climb(matrix, protein, iterations):
         if new_protein.score_function()[0] <= all_time_low:
             all_time_low = copy.deepcopy(new_protein.score_function()[0])
             best_protein = copy.deepcopy(new_protein)
-
-        
-    
+ 
+        print(i)
     print(all_time_low)
     return matrix, best_protein
     
