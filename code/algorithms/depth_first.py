@@ -11,7 +11,7 @@ class DepthFirst:
         self.queue = [self.protein]
         #self.visited = [[self.protein.protein[0][0],self.protein.protein[0][1]]]
 
-    # haal de parent uit de queue, 
+    # take the parent out of the queue 
     def depth_pop(self, length, index):
         print(length, index)
         self.parent_protein = self.queue.pop()
@@ -35,7 +35,7 @@ class DepthFirst:
         for i in directions:
             for j in coordinates:
                 
-                # keep track of the initial amino aciod
+                # keep track of the initial amino acid
                 self.child_amino = copy.deepcopy(amino_acid) # copy of list
                 self.amino_object = copy.deepcopy(self.amino_acid)
 
@@ -46,7 +46,7 @@ class DepthFirst:
                     #print('whole amino: ' + str(amino))
                     visited.append([amino[0], amino[1]])
 
-                # alter the child amino according to the available connections
+                # alter the child_amino according to the available connections
                 self.child_amino[j] += i # change list
 
                 if [self.child_amino[0], self.child_amino[1]] not in visited: # check if list in list
@@ -55,9 +55,9 @@ class DepthFirst:
                     self.amino_object.make_amino(self.child_amino[0], self.child_amino[1], self.protein_string[index])
                     amino_children.append(copy.deepcopy(self.amino_object))
 
-        # create all the individual children and add them to the queue
+        
         counter = 0
-
+        # create all the individual children and add them to the queue
         for child_amino in amino_children: # search list of objects
 
             if counter == 0:
@@ -120,10 +120,10 @@ class DepthFirst:
 
             self.child = copy.deepcopy(self.parent_protein)  # copy the original protein object
             print('self.child: ' + str(self.child))
-            # aan self.child voegen we amino_child toe
+            # add self.child to amino.child
             self.child.add_amino_acid(child_amino.row, child_amino.column, child_amino.value)
 
-            # check the score and save the lowest score and it's protein
+            # check the score and save the lowest score and its protein
             self.score = self.child.score_function()[0]
             print(self.score)
 
@@ -138,7 +138,7 @@ class DepthFirst:
         return self.queue, self.lowest_score, self.best_protein
 
 
-    # run the object for every
+    # run the object for every index
     def run(self):
         
         new_queue = self.queue

@@ -21,7 +21,7 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
         if matrix.get_matrix()[amino_acid.row][amino_acid.column - 1] == 0:
             connections.set_connections("left", 0, -1)
         
-        # from connections, find the best connection (high energy stability)
+        # from connections, find the best connection (lowest energy state)
         # get connections
         options = connections.connections
 
@@ -108,18 +108,18 @@ def greedy(matrix, protein_string, amino_acid, protein, connections):
                     change = True
                     break
                               
-        # if amino_acid made does not get updated, make a random step
+        # if the amino_acid made does not get updated, make a random step
         if change == False:
             step = connections.get_random_connection()
             amino_acid.update_position(step[1][0], step[1][1])
         
-        # update amino acid value
+        # update the amino_acid value
         amino_acid.update_value(value)
 
-        #place amino acid in matrix
+        # place amino_acid in matrix
         matrix.update_matrix(amino_acid.row, amino_acid.column, amino_acid.value)
 
-        # place amino acid in protein string
+        # place amino_acid in protein string
         protein.add_amino_acid(amino_acid.row, amino_acid.column, amino_acid.value)
 
         # clear out connections  

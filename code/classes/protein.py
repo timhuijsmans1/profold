@@ -98,7 +98,7 @@ class Protein:
         return valid
 
     def score_function(self):
-        """Check the score for all H amino acid pairs, only if not a P amino acid"""
+        """Check the score for all H and C amino acid combinations"""
         stability = 0
         coordinates = []
         for amino_acid in self.protein:
