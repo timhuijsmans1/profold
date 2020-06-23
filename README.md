@@ -9,8 +9,7 @@ Het doel voor deze case is om verschillende algoritmes te gebruiken en specifiek
 
 ## Getting Started
 ```command 
-pip install numpy 1.18.5
-pip install matplotlib 3.2.1
+pip install -r requirements.txt
 ```
 ## Usage 
 Type een integer tussen 1-4 om te kiezen welke string je wilt gebruiken, daarna voer je het algoritme wat je wilt gebruiken in.

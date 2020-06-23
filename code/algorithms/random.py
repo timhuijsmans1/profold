@@ -30,10 +30,10 @@ def random_algorithm(matrix, protein_string, amino_acid, protein, connections):
         amino_acid.update_value(value)
         amino_acid.update_position(step[1][0], step[1][1])
         
-        # update matrix with next amino acid
+        # update the matrix with the next amino acid
         matrix.update_matrix(amino_acid.row, amino_acid.column, amino_acid.value)
         
-        # add the the coordinates and value of the amino acid to the Protein
+        # add the coordinates and value of the amino acid to the Protein
         protein.add_amino_acid(amino_acid.row, amino_acid.column, amino_acid.value)
         
         connections.clear_connections()

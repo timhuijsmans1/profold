@@ -68,14 +68,14 @@ def main(string_input, algorithm_input):
     if algorithm_input == "breadth-first": 
         matrix = bf.BreadthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
         matrix, protein = matrix.run()
-        visualizer(matrix, protein)
+        visualizer(matrix, protein, algorithm_input)
         
     # ----------------------- Depth-first search construction ----------------------
     if algorithm_input == "depth-first":
         try:
             matrix = df.DepthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
             matrix, protein = matrix.run()
-            visualizer(matrix, protein)
+            visualizer(matrix, protein, algorithm_input)
         except IndexError:
             print('finished')
 
@@ -85,11 +85,14 @@ def main(string_input, algorithm_input):
         matrix = hill_climb(input_matrix[0], input_matrix[1], 3)
 
     #make plot
-    #print(matrix[1].get_protein())
+    if algorithm_input in ['random_algorithm', 'greedy']:
 
-    # for row in matrix[0].get_matrix():    
-        # print(row)
-    # visualizer(matrix[0], matrix[1])
+        print(matrix[1].get_protein())
+
+        for row in matrix[0].get_matrix():    
+            print(row)
+        
+        visualizer(matrix[0], matrix[1], algorithm_input)
     
     
 if __name__ == "__main__":

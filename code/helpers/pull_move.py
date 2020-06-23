@@ -34,25 +34,25 @@ def pull_move(protein_string, matrix_input):
             x_imin1 = protein[vertex_index - 1][0]
             y_imin1 = protein[vertex_index - 1][1]
             
-            # make pull move to down-left
+            # make a pull move to down-left
             if x_i > x_i1:
                 print("I'm going down left")
                 direction = "down-left"
                 diagonal_adjecent_min1 = [x_imin1 - 1, y_imin1 - 1]
 
-            # make pull move to up-right
+            # make a pull move to up-right
             if x_i < x_i1:
                 print("I'm going up right")
                 direction = "up-right"
                 diagonal_adjecent_min1 = [x_imin1 + 1, y_imin1 + 1]
             
-            # make pull move to up-left
+            # make a pull move to up-left
             if y_i < y_i1:
                 print("I'm going up left")
                 direction = "up-left"
                 diagonal_adjecent_min1 = [x_imin1 - 1, y_imin1 + 1]
             
-            # make pull move to down-right
+            # make a pull move to down-right
             if y_i > y_i1:
                 print("I'm going down right")
                 direction = "down-right"

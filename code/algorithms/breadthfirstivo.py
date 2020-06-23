@@ -11,7 +11,7 @@ class BreadthFirst:
         self.queue = [self.protein]
         #self.visited = [[self.protein.protein[0][0],self.protein.protein[0][1]]]
 
-    # haal de parent uit de queue, 
+    # take the parent out of the queue 
     def breadth_pop(self, length, index):
         print(length, index)
         self.parent_protein = self.queue.pop(0)
@@ -35,7 +35,7 @@ class BreadthFirst:
         for i in directions:
             for j in coordinates:
                 
-                # keep track of the initial amino aciod
+                # keep track of the initial amino acid
                 self.child_amino = copy.deepcopy(amino_acid) # copy of list
                 self.amino_object = copy.deepcopy(self.amino_acid)
 
@@ -46,18 +46,16 @@ class BreadthFirst:
                     #print('whole amino: ' + str(amino))
                     visited.append([amino[0], amino[1]])
 
-                # alter the child amino according to the available connections
+                # alter the child_amino according to the available connections
                 self.child_amino[j] += i # change list
 
                 if [self.child_amino[0], self.child_amino[1]] not in visited: # check if list in list
                     
                     # make the next amino acid for the child protein
                     self.amino_object.make_amino(self.child_amino[0], self.child_amino[1], self.protein_string[index])
-                    amino_children.append(copy.deepcopy(self.amino_object))
-
+                    amino_children.append(copy.deepcopy(self.amino_object))  
         # create all the individual children and add them to the queue
         counter = 0
-
         for child_amino in amino_children: # search list of objects
 
             if counter == 0:
@@ -66,10 +64,10 @@ class BreadthFirst:
 
                 self.child = copy.deepcopy(self.parent_protein) # copy the original protein object
 
-                # aan self.child voegen we amino_child toe
+                # add child_amino to self.child
                 self.child.add_amino_acid(child_amino.row, child_amino.column, child_amino.value)
 
-                # check the score and save the lowest score and it's protein
+                # check the score and save the lowest score and its protein
                 self.score = self.child.score_function()[0]
 
                 if self.score <= self.lowest_score:
@@ -93,7 +91,7 @@ class BreadthFirst:
         for i in directions:
             for j in coordinates:
 
-                # keep track of the initial amino aciod
+                # keep track of the initial amino acid
                 self.child_amino = copy.deepcopy(amino_acid)  # copy of list
                 self.amino_object = copy.deepcopy(self.amino_acid)
 
@@ -112,20 +110,20 @@ class BreadthFirst:
                     # make the next amino acid for the child protein
                     self.amino_object.make_amino(self.child_amino[0], self.child_amino[1], self.protein_string[index])
                     amino_children.append(copy.deepcopy(self.amino_object))
-
+            print(amino_children)     
         # create all the individual children and add them to the queue
         for child_amino in amino_children:  # search list of objects
 
             self.child = copy.deepcopy(self.parent_protein)  # copy the original protein object
 
-            # aan self.child voegen we amino_child toe
+            # add child_amino to self.child
             self.child.add_amino_acid(child_amino.row, child_amino.column, child_amino.value)
 
-            # check the score and save the lowest score and it's protein
+            # check the score and save the lowest score and its protein
             self.score = self.child.score_function()[0]
             print(self.score)
 
-            if self.score <= self.lowest_score:
+            if self.score - 2 <= self.lowest_score:
                 self.lowest_score = copy.deepcopy(self.score)
                 self.best_protein = copy.deepcopy(self.child)
                 self.queue.append(copy.deepcopy(self.child))
@@ -151,26 +149,12 @@ class BreadthFirst:
                 print(index)
                 iterate_counter += 1
                 if iterate_counter == 1:
-                    print(index)
                     parent_protein = self.breadth_pop(len(new_queue[0].protein) - 1, index)
-                    print(index)
                     amino = self.get_last_amino(parent_protein)
                     result = self.create_child(amino, index)
                     new_queue = result[0]
                 else:
                     parent_protein = self.breadth_pop(len(new_queue[0].protein) - 1, index)
-
-                    print(index)
-
-                    print('parent_protein: ' + str(parent_protein.protein))
-                    try:
-                        print('new_queue: ' + str(new_queue[0]))
-                        print('new_queue[0]: ' + str(new_queue[0]))
-                        print('new_queue[0].protein: ' + str(new_queue[0].protein))
-                    except IndexError:
-                        print('fcked')
-                    print('index: ' + str(index))
-
                     amino = self.get_last_amino(parent_protein)
                     print(index)
                     result = self.create_children(amino, index)
