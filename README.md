@@ -20,6 +20,12 @@ Example:
 python main.py 1 greedy
 python3 main.py 2 random
 ```
+## Opmerking bij gebruik hillclimb
+Het kan zo nu en dan voorkomen dat de random string die als input genomen wordt geen valid eiwit object is. In dat geval zie je de error "object "str" has no attribute .protein" en dien je het algoritme opnieuw te starten. 
+
+## Opmerking over de visualisatie
+Mocht het eiwit niet netjes weergegeven worden in de grid, dan kun je in visualizations die x- en y ticks aanpassen om het eiwit netjes in de plot te laten passen.
+
 ### Structuur
 
 Hier kan men de structuur zien die wij hebben aangehouden bij ons project:
