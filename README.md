@@ -13,7 +13,7 @@ pip install numpy 1.18.5
 pip install matplotlib 3.2.1
 ```
 ## Usage 
-Type een integer tussen1-2 om te kiezen welke string je wilt gebruiken, daarna voer je het algoritme wat je wilt gebruiken in.
+Type een integer tussen 1-4 om te kiezen welke string je wilt gebruiken, daarna voer je het algoritme wat je wilt gebruiken in.
 ```command
 Example:
 1: HHPHHHPHPHHHPH
