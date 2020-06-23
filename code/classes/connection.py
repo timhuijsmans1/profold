@@ -13,7 +13,10 @@ class Connection:
         return self.connections 
 
     def get_random_connection(self):
-        return random.choice(list(self.connections.items()))
+        if len(self.connections) == 0:    
+            return False
+        else:
+            return random.choice(list(self.connections.items()))
         
     def clear_connections(self):
         self.connections = {}

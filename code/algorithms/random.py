@@ -1,13 +1,16 @@
 import random
+import copy
 
 
 def random_algorithm(matrix, protein_string, amino_acid, protein, connections):    
     """Update the matrix with the remaining values of the protein string"""
+    matrix = copy.deepcopy(matrix)
+    protein = copy.deepcopy(protein)
+    amino_acid = copy.deepcopy(amino_acid)
     
     # place all other amino acids in the string on a random connected point
 
     for value in protein_string:    
-        
         
         # check available positions in the y dimension
         if matrix.get_matrix()[amino_acid.row + 1][amino_acid.column] == 0:
@@ -26,6 +29,10 @@ def random_algorithm(matrix, protein_string, amino_acid, protein, connections):
         # pick a random connection from the connections
         step = connections.get_random_connection()
 
+        # if protein comes to a dead end, terminate the current solution
+        if step == False:
+            return "Terminate"
+
         # update the value and position of the amino acid
         amino_acid.update_value(value)
         amino_acid.update_position(step[1][0], step[1][1])
@@ -39,6 +46,6 @@ def random_algorithm(matrix, protein_string, amino_acid, protein, connections):
         connections.clear_connections()
         #print(protein.get_protein())
         
-    return matrix, protein
+    return matrix, protein, protein.score_function()[0]
         
         

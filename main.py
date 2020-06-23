@@ -15,7 +15,9 @@ from code.algorithms.hillclimb import hill_climb
 
 from code.visualizations.visualize import visualizer
 
+from matplotlib import pyplot as plt
 from sys import argv
+import numpy as np
 
 def main(string_input, algorithm_input):
 
@@ -57,13 +59,46 @@ def main(string_input, algorithm_input):
     initial_matrix = matrix_initializer(initial_matrix, amino_acid, protein)
     
     # -------------------- Random protein construction -------------------------
+    # run the entire algorithm 1000 times and store all the scores, plot a histogram
     if algorithm_input == "random":
-        matrix, protein = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+        scores = []
+        
+        for i in range(5000):
+            solution = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+            print("solution:",i,"out of 10.000")
+            if solution == "Terminate":
+                pass
+            else: 
+                matrix, protein, score = solution
+                scores.append(score)
+
+        plt.hist(scores, 20)
+        plt.title("Counts for random scores of 10.000 iterations")
+        plt.xticks(np.arange(-10,0,1.0))
+        plt.ylabel("count")
+        plt.xlabel("score")
+        plt.show()
+
 
     # ----------------------- Greedy construction ------------------------------
     if algorithm_input == "greedy":
-        matrix, protein = greedy(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+        scores = []
+        
+        for i in range(5000):
+            solution = greedy(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
+            print("solution:",i,"out of 10.000")
+            if solution == "Terminate":
+                pass
+            else: 
+                matrix, protein, score = solution
+                scores.append(score)
 
+        plt.hist(scores, 20)
+        plt.title("Counts for greedy scores of 10.000 iterations")
+        plt.xticks(np.arange(-10,0,1.0))
+        plt.ylabel("count")
+        plt.xlabel("score")
+        plt.show()
     # ----------------------- Breadth-search construction ----------------------
     if algorithm_input == "breadth-first": 
         matrix = bf.BreadthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
@@ -80,7 +115,7 @@ def main(string_input, algorithm_input):
     # ------------------------- Hill climber algorithm -------------------------
     if algorithm_input == "hillclimb":
         input_matrix = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
-        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 100000)
+        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 300, 1)
         
     visualizer(matrix, protein, algorithm_input)
 
