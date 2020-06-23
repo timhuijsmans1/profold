@@ -124,7 +124,7 @@ def main(string_input, algorithm_input):
     # ------------------------- Hill climber algorithm -------------------------
     if algorithm_input == "hillclimb":
         input_matrix = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
-        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 300, 10)
+        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 300, 1)
         
     visualizer(matrix, protein, algorithm_input)
 
