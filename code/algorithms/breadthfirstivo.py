@@ -127,7 +127,7 @@ class BreadthFirst:
             self.score = self.child.score_function()[0]
             print(self.score)
 
-            if self.score - 2 <= self.lowest_score:
+            if self.score <= self.lowest_score:
                 self.lowest_score = copy.deepcopy(self.score)
                 self.best_protein = copy.deepcopy(self.child)
                 self.queue.append(copy.deepcopy(self.child))
