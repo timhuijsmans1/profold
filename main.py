@@ -27,7 +27,7 @@ def main(string_input, algorithm_input):
         protein_string = ["H", "P", "H", "P", "P", "H", "H", "P", "H", "P", "P", "H", "P", "H", "H", "P", "P", "H", "P", "H"]
 
     if string_input == 3:
-        protein_string = ["P", "P", "P", "H", "H", "P", "P", "H", "P", "P", "P", "P", "P", "H", "H", "H", "H", "H", "H", "H", "P", "P", "H", "H", "P", "P", "P", "P", "H", "H", "P", "P", "H", "P", "P"]
+        protein_string = ["P","P","P","H","H","P","P","H","P","P","P","P","P","H","H","H","H","H","H","H","P","P","H","H","P","P","P","P","H","H","P","P","H","P","P"]
 
     if string_input == 4:
         protein_string = ["H", "H", "P", "H", "P", "H", "P", "H", "P", "H", "H", "H", "H", "P", "H", "P", "P", "P", "H", "P", "P" , "P", "H", "P", "P", "P", "P", "H", "P", "P", "P", "H", "P", "P", "P", "H", "P", "H", "H", "H", "H", "P", "H", "P", "H", "P", "H", "P", "H", "H"]
@@ -47,8 +47,8 @@ def main(string_input, algorithm_input):
     protein_string_converted = string_converter(protein_string)
 
     # set initial values
-    height = 30 #int(len(protein_string_converted) * 2)
-    width = 30 #int(len(protein_string_converted) * 2)
+    height = int(len(protein_string_converted) * 2)
+    width = int(len(protein_string_converted) * 2)
     
     # create matrix object
     initial_matrix = Matrix(width, height)
@@ -81,7 +81,7 @@ def main(string_input, algorithm_input):
 
         plt.hist(scores, 20)
         plt.title("Counts for random scores of 10.000 iterations")
-        plt.xticks(np.arange(-10,0,1.0))
+        plt.xticks(np.arange(-50,0,1.0))
         plt.ylabel("count")
         plt.xlabel("score")
         plt.show()
@@ -90,7 +90,6 @@ def main(string_input, algorithm_input):
     # ----------------------- Greedy construction ------------------------------
     if algorithm_input == "greedy":
         scores = []
-        
         for i in range(5000):
             solution = greedy(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
             print("solution:",i,"out of 10.000")
@@ -102,7 +101,7 @@ def main(string_input, algorithm_input):
 
         plt.hist(scores, 20)
         plt.title("Counts for greedy scores of 10.000 iterations")
-        plt.xticks(np.arange(-10,0,1.0))
+        plt.xticks(np.arange(-30,0,5))
         plt.ylabel("count")
         plt.xlabel("score")
         plt.show()
