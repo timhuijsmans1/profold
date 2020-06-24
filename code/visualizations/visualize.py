@@ -3,30 +3,25 @@ import numpy as np
 
 def visualizer(matrix, protein, algorithm_name):
     """Output: h*w matrix showing the folded protein and the
-     list of aminoacid location in order of bonds"""    
-    
+     list of aminoacid location in order of bonds"""
+
     # for random algorithm just show the histogram
     if algorithm_name not in ["sneak"]:
         score = protein.score_function()[0]
         neighbours = protein.score_function()[1]
 
-        # make H amino item
         x_H = []
         y_H = []
 
-        # make P amino item
         x_P = []
         y_P = []
-        
-        # make C amino item
+
         x_C = []
         y_C = []
 
-        # make line between amino acids
         x = []
-        y = []   
+        y = []
 
-        # make proteins
         for item in protein.protein:
             x.append(item[0])
             y.append(item[1])
@@ -43,7 +38,6 @@ def visualizer(matrix, protein, algorithm_name):
                 x_C.append(item[0])
                 y_C.append(item[1])
 
-        # draw dotted line between neighbours
         for neighbour in neighbours:
             plt.plot([neighbour[0],neighbour[1]], [neighbour[2], neighbour[3]], color="k", linestyle="dotted")
         plt.plot([neighbours[-1][0],neighbours[-1][1]], [neighbours[-1][2], neighbours[-1][3]], color="k", linestyle="dotted", label ="neighbours")
@@ -55,18 +49,34 @@ def visualizer(matrix, protein, algorithm_name):
         plt.plot(x_H, y_H, "ro", markersize=12, label ="H")
         plt.plot(x_P, y_P, "bo", markersize=12, label ="P")
 
+<<<<<<< HEAD
         # plot the C amino acid if present
         if len(x_C) > 0:    
             plt.plot(x_C, y_C, "go", markersize=12, label ="C")
 
         plt.xticks(np.arange(36,57,1.0))
         plt.yticks(np.arange(40,58,1.0))
+=======
+        if len(x_C) > 0:
+            plt.plot(x_C, y_C, "go", markersize=12, label ="C")
+
+        plt.xticks(np.arange(41,57,1.0))
+        plt.yticks(np.arange(44,56,1.0))
+>>>>>>> 8b658139ebc3a196c2fa7e7e6de1d0a1580384b4
         plt.ylabel('protein height')
         plt.xlabel('protein width')
         plt.grid(True)
+
         plt.title(f"algorithm: {algorithm_name}")
+
         plt.suptitle(f"score: {score}")
         plt.legend()
+<<<<<<< HEAD
         
 
         plt.show()  
+=======
+
+
+        plt.show()
+>>>>>>> 8b658139ebc3a196c2fa7e7e6de1d0a1580384b4

@@ -150,7 +150,7 @@ class BreadthFirst:
                 
             else:
                 # append all the children
-                if len(self.parent_protein.protein) <= 14:
+                if len(self.parent_protein.protein) <= 5:
                     self.queue.append(copy.deepcopy(self.child))
                     
                 # append the best children
