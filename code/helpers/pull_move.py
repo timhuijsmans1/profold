@@ -9,7 +9,7 @@ def pull_move(protein_string, try_index):
     
     # set counter and repeat the pull move 100 times
     counter = 0
-    while counter < 100:
+    while counter < 3:
         
         # set new protein to work the pull on
         new_protein = copy.deepcopy(new_protein_string.protein)

@@ -18,6 +18,7 @@ from code.visualizations.visualize import visualizer
 from matplotlib import pyplot as plt
 from sys import argv
 import numpy as np
+import copy
 
 def main(string_input, algorithm_input):
 
@@ -49,8 +50,8 @@ def main(string_input, algorithm_input):
     protein_string_converted = string_converter(protein_string)
 
     # set initial values
-    height = 30 #int(len(protein_string_converted) * 2)
-    width = 30 #int(len(protein_string_converted) * 2)
+    height = int(len(protein_string_converted) * 2)
+    width = int(len(protein_string_converted) * 2)
     
     # create matrix object
     initial_matrix = Matrix(width, height)
@@ -72,6 +73,7 @@ def main(string_input, algorithm_input):
     if algorithm_input == "random":
         scores = []
         
+        best_score = 0
         for i in range(5000):
             solution = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
             print("solution:",i,"out of 10.000")
@@ -80,34 +82,42 @@ def main(string_input, algorithm_input):
             else: 
                 matrix, protein, score = solution
                 scores.append(score)
+                if score < best_score:
+                    best_score = copy.deepcopy(score)
+                    best_protein = copy.deepcopy(protein)
 
         plt.hist(scores, 20)
         plt.title("Counts for random scores of 10.000 iterations")
-        plt.xticks(np.arange(-10,0,1.0))
+        plt.xticks(np.arange(-30,0,5))
         plt.ylabel("count")
         plt.xlabel("score")
         plt.show()
+        visualizer(matrix, best_protein, algorithm_input)
 
 
     # ----------------------- Greedy construction ------------------------------
     if algorithm_input == "greedy":
         scores = []
-        
-        for i in range(5000):
+        best_score = 0
+        for i in range(10000):
             solution = greedy(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
-            print("solution:",i,"out of 10.000")
+            print("solution:",i,"out of 5000")
             if solution == "Terminate":
                 pass
             else: 
                 matrix, protein, score = solution
                 scores.append(score)
+                if score < best_score:
+                    best_score = copy.deepcopy(score)
+                    best_protein = copy.deepcopy(protein)
 
         plt.hist(scores, 20)
         plt.title("Counts for greedy scores of 10.000 iterations")
-        plt.xticks(np.arange(-10,0,1.0))
+        plt.xticks(np.arange(-30,0,5))
         plt.ylabel("count")
         plt.xlabel("score")
         plt.show()
+        visualizer(matrix, best_protein, algorithm_input)
     # ----------------------- Breadth-search construction ----------------------
     if algorithm_input == "breadth-first": 
         matrix = bf.BreadthFirst(protein_string_converted[1:], initial_matrix[1], initial_matrix[2])
@@ -124,7 +134,7 @@ def main(string_input, algorithm_input):
     # ------------------------- Hill climber algorithm -------------------------
     if algorithm_input == "hillclimb":
         input_matrix = random_algorithm(initial_matrix[0], protein_string_converted[1:], initial_matrix[1], initial_matrix[2], connections)
-        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 300, 1)
+        matrix, protein = hill_climb(input_matrix[0], input_matrix[1], 2000, 50)
         
     visualizer(matrix, protein, algorithm_input)
 

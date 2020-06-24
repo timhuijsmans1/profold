@@ -1,4 +1,6 @@
 import copy
+from matplotlib import pyplot as plt
+import numpy as np
 
 from code.helpers.pull_move import pull_move
 
@@ -29,7 +31,7 @@ def hill_climb(matrix, protein, iterations, tries):
             new_protein = pull_move(new_protein, j)
 
             # accept the new protein if it's equal to or better than the previous protein
-            if new_protein.score_function()[0] <= input_score:
+            if new_protein.score_function()[0] < input_score:
                 check_protein = copy.deepcopy(new_protein)
 
             # set the all time lowest score if it's reached    
@@ -38,6 +40,11 @@ def hill_climb(matrix, protein, iterations, tries):
                 best_protein = copy.deepcopy(new_protein)
 
         scores.append(all_time_low)
+    plt.hist(scores, 25)
+    plt.title("Hill climber fold met enkelvoudige pull move en 2000 iteraties, 50 keer uitgevoerd")
+    plt.ylabel("count")
+    plt.xlabel("scores")
+    plt.show()
 
     print("laagste scores van de climbs:", scores)
     #print(all_time_low)

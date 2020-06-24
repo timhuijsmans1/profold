@@ -6,7 +6,7 @@ def visualizer(matrix, protein, algorithm_name):
      list of aminoacid location in order of bonds"""    
     
     # for random algorithm just show the histogram
-    if algorithm_name not in ["random", "greedy"]:
+    if algorithm_name not in ["sneak"]:
         score = protein.score_function()[0]
         neighbours = protein.score_function()[1]
 
@@ -40,19 +40,20 @@ def visualizer(matrix, protein, algorithm_name):
 
         for neighbour in neighbours:
             plt.plot([neighbour[0],neighbour[1]], [neighbour[2], neighbour[3]], color="k", linestyle="dotted")
-        plt.plot(x, y, "k-", linewidth=2)
+        plt.plot([neighbours[-1][0],neighbours[-1][1]], [neighbours[-1][2], neighbours[-1][3]], color="k", linestyle="dotted", label ="neighbours")
+        plt.plot(x, y, "k-", linewidth=2, label ="connected amino's")
 
-        plt.plot(x_H, y_H, "bo", markersize=12)
-        plt.plot(x_P, y_P, "ro", markersize=12)
+        #plt.plot(x_H, y_H, "bo", markersize=12,)
+        #plt.plot(x_P, y_P, "ro", markersize=12)
 
-        plt.plot(x_H, y_H, "ro", markersize=12)
-        plt.plot(x_P, y_P, "bo", markersize=12)
+        plt.plot(x_H, y_H, "ro", markersize=12, label ="H")
+        plt.plot(x_P, y_P, "bo", markersize=12, label ="P")
 
         if len(x_C) > 0:    
-            plt.plot(x_C, y_C, "go", markersize=12)
+            plt.plot(x_C, y_C, "go", markersize=12, label ="C")
 
-        plt.xticks(np.arange(5,25,1.0))
-        plt.yticks(np.arange(5,25,1.0))
+        plt.xticks(np.arange(36,57,1.0))
+        plt.yticks(np.arange(40,58,1.0))
         plt.ylabel('protein height')
         plt.xlabel('protein width')
         plt.grid(True)
@@ -60,7 +61,7 @@ def visualizer(matrix, protein, algorithm_name):
         plt.title(f"algorithm: {algorithm_name}")
 
         plt.suptitle(f"score: {score}")
-
+        plt.legend()
         
 
         plt.show()  
